@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Peta Ketigaku</title>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+
+</body>
+<script type="text/javascript">
+     var mymap = L.map('mapku').setView([-0.9137822,100.4640162],17);
+    
+     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom:18,
+        id:'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    var circle = L.circle([-0.9136017389283296, 100.45793871560086],{ 
+        color: 'red',
+        fillcolor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(mymap).bindPopup('I am a circle');
+
+    var polygon = L.polygon([
+        [-0.9255463041504033, 100.44991967736703],
+        [-0.924787671684388, 100.4675359798021],
+        [-0.9142515204595401, 100.4578645677542]
+    ]).addTo(mymap).bindPopup('I am a Polygon');
+
+
+  var info_pnp ='<p style  ="text-align: center;"><img src="images/pnp.png" width="100px" height="100px"/></p><p>Politeknik Negeri Padang hadir di tengah-tengah masyarakat dengan menerapkan sistem pendidikan yang konsisten pada jalur pendidikan vokasional dengan menerapkan sistem pembelajaran yang aplikatif serta secara terus menerus menyesuaikan diri dengan perkembangan dunia industri dan dunia usaha yang ada untuk menghasilkan tenaga kerja yang berkompeten sesuai dengan permintaan pasar dan mampu bersaing pada era persaingan global.</p>';
+  var info_unand ='<p style  ="text-align: center;"><img src="images/unand.png" width="100px" height="100px"/></p><p>Rumah Sakit Universitas Andalas adalah salah satu rumah sakit yang ada di Kota Padang, Sumatera Barat.[2] Rumah sakit ini berada di bawah pengelolaan Universitas Andalas yang berlokasi di komplek kampus Universitas Andalas, Limau Manis, Kecamatan Pauh, Kota Padang. </p>';
+
+  L.marker([-0.9137822,100.4640162]).bindTooltip("Politeknik Negeri Padang").bindPopup(info_pnp).addTo(mymap); //Politeknik Negeri Padang
+  L.marker([-0.9201926019559669, 100.45665024238309]).bindTooltip("Rumah Sakit universitas Andalas").bindPopup(info_unand).addTo(mymap); //Rumah Sakit universitas Andalas
+
+  var popup = L.popup()
+            .setLatLng([-0.9214535100986077, 100.4491797666248])
+            .setContent('I am a Standalone Popup.')
+            .openOn(mymap);
+
+  function onMapClick(e) {
+        popup 
+            .setLatLng(e.latlng)
+            .setContent('You Clicked the map at' + e.latlng.toString())
+            .openOn(mymap);
+    }
+    mymap.on('click', onMapClick);
+
+    var myLocation = [
+        [-0.9242109249264069, 100.36237153753346,'Masjid Raya Sumbar','informasi tentang masjid raya Sumbar'],
+        [-0.9376530171185209, 100.36042123938745,'Kantor gubernur Sumbar','Informasi tentang Kantor Gubernur Sumbar'],
+        [-0.87555458220865, 100.38738528171484,'Kantor Walikota Padang','Informasi tentang Walikota Sumbar'],
+        [-0.9145035345178503, 100.46617245473253,'Polkiteknik Negeri Padang','Informasi tentang PNP'],
+    ]; //array dari lokasi Kita
+
+    for (var i = 0 ; i<mylocation.lenght; i++){
+        markerMaps = new L.marker([myLocation[i][0], myLocation[i][1]]).addTo(mymap).bindTooltip(myLocation[i][2]).bindPopup(myLocation[i][3]);
+    }
+</script>
+</html>
