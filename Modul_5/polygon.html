@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Membuat Polygon</title>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+
+</body>
+<script type="text/javascript">
+     var mymap = L.map('mapku').setView([-0.9137822,100.4640162],17);
+    
+     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom:18,
+        id:'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    var KoordinatAreaPoliteknik = [
+        
+           
+            [-0.9147077376519951, 100.46564379056132],
+            [-0.9134794067529808, 100.46584268850081],
+            [-0.9123914561774883, 100.46593628753118],
+            [-0.9128476935556772, 100.46776146862321],
+            [-0.9130348678479252, 100.46910695468463],
+            [-0.914602452162829, 100.46897825601789],
+            [-0.9149651021680503, 100.46833476268415],
+            [-0.9148130231380698, 100.46652128147093],
+            [-0.9147077376519951, 100.46560869092491],
+    ];
+
+   var areaPoliteknik = L.polygon(KoordinatAreaPoliteknik,{color: 'orange'}).addTo(mymap);
+   
+   var KoordinatFakultasTeknik = [
+            [-0.9147077376519951, 100.46564379056132],
+            [-0.9134794067529808, 100.46584268850081],
+            [-0.9123914561774883, 100.46593628753118],
+            [-0.911748044391979, 100.46505879662156],
+            [-0.9110227436958979, 100.46407600680278],
+            [-0.9115374732371896, 100.46271882086256],
+            [-0.9123914561774883, 100.46308151710521],
+            [-0.9146843408768808, 100.46294111855967],
+            [-0.9146843408768808, 100.46422810522711],
+            [-0.9146960392644697, 100.46564379056132],
+   ];
+   var areaFakTeknik = L.polygon(KoordinatFakultasTeknik,{color: 'green'}).addTo(mymap);
+
+</script>
+</html>
