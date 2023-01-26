@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Membuat Line</title>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+
+</body>
+<script type="text/javascript">
+     var mymap = L.map('mapku').setView([-0.9137822,100.4640162],17);
+    
+     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom:18,
+        id:'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    var DuaJalanKePoli = [
+        [
+            [-0.9154689743347212, 100.46215990383692],
+            [-0.9148948507469233, 100.46266789580345],
+            [-0.914684517428695, 100.46384240656175],
+            [-0.9147020452056933, 100.46505197734267],
+            [-0.9147371007594098, 100.46601612796516],
+            [-0.9149606688758922, 100.46764679737939],
+            [-0.9140885729600954, 100.46768147904035],
+
+        ],
+        
+        [
+            [-0.9148948507469233, 100.46266789580345],
+            [-0.9123708501151195, 100.46305355605244],
+            [-0.9114944605924572, 100.46270295582609],
+            [-0.9111964881061557, 100.46447348696918],
+            [-0.9126512947173018, 100.46729581879136],
+            [-0.9130326130329064, 100.46901413826218],
+            [-0.9146101133450877, 100.46899660825088],
+            [-0.9149781966515292, 100.46768185740201],
+            [-0.9142245022216493, 100.46782209749256],
+
+        ]
+    ]
+
+    L.polyline(DuaJalanKePoli).addTo(mymap);
+
+    L.marker([-0.9124541960782858, 100.4663846365645])
+        .bindTooltip("<b>Jalan Terjauh </b> <br> Jarak 7km")
+        .addTo(mymap);
+    
+    L.marker([-0.9147328077847623, 100.46557825604387])
+        .bindTooltip("<b>Jalan Tercepat </b> <br> Jarak 4km")
+        .addTo(mymap);   
+
+</script>
+</html>
